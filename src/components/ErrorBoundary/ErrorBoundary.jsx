@@ -37,6 +37,21 @@ export default class ErrorBoundary extends React.Component {
   }
 }
 
+export function withErrorBoundary(component) {
+  const Component = component;
+  return class extends ErrorBoundary {
+    render() {
+      const { hasError, error } = this.state;
+
+      if (hasError) {
+        return <ErrorFallback error={error} />;
+      }
+
+      return <Component {...this.props} />;
+    }
+  };
+}
+
 ErrorBoundary.propTypes = {
   children: PropTypes.element.isRequired,
 };
