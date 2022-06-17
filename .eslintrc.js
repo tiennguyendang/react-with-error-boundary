@@ -62,5 +62,15 @@ module.exports = {
         "filenames/match-regex": [2, "^[A-Z][a-z].+(?:[A-Z][a-z].+)*$", true],
       },
     },
-  ]
+  ],
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [
+          ['@', './src'],
+        ],
+        extensions: [".js",".jsx"]
+      },
+    },
+  },
 };
